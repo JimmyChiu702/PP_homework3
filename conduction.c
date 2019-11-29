@@ -38,23 +38,7 @@ int main(int argc, char **argv) {
   int left[W], right[W];
   memcpy(&left, (rank==0) ? temp : (temp+((offset-1)*W)), sizeof(int)*W);
   memcpy(&right, (rank+1==size) ? temp+((L-1)*W) : (temp+(offset+rows)*W), sizeof(int)*W);
-  // DEBUG
-  /*
-  if (rank==3) {
-    for (int i=0; i<W; i++) {
-      for (int j=0; j<L; j++) {
-        printf("%d ", temp[j*W+i]);
-      }
-      printf("\n");
-    }
-
-    printf("\n\n\n\n");
-
-    for (int i=0; i<W; i++) {
-      printf("%d %d\n", left[i], right[i]);
-    }
-  }
-  */
+  
   int count = 0, local_balance = 0, global_balance;
   while (iteration--) {     // Compute with up, left, right, down points
     local_balance = 1;
